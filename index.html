@@ -2,27 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" name="google-site-verification" content="tu-código-de-verificación" />">
     <title>Supermercado Demo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Poppins:wght@600&family=Lobster&display=swap" rel="stylesheet">
-    <!-- Incluir Font Awesome para los íconos de redes sociales -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&family=Montserrat:wght@800&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css">
+    <!-- Enlace a la biblioteca Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <style>
-        /* Estilos generales de la página */
+    
+        /* Tipografía global */
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #FFF5E1;
-            font-family: Arial, sans-serif;
-            color: #333;
-            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
         }
 
         /* Barra de navegación */
         nav {
             background-color: #F57C00;
-            padding: 15px 30px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,86 +29,88 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        /* Logo */
         nav .logo {
-            max-height: 60px;
-            width: 60px; /* Ajusta el tamaño del logo */
-            border-radius: 50%; /* Hacemos el logo redondo */
+            max-height: 125px;
+            width: auto;
+            border-radius: 50%;
         }
-
-        /* Contenedor para los elementos del menú */
         nav .menu {
             display: flex;
-            justify-content: center; /* Centra los elementos del menú */
-            flex-grow: 1; /* Hace que los elementos se expandan para ocupar el espacio */
+            justify-content: center;
+            flex-grow: 1;
         }
-
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; /* Asegura que los enlaces estén centrados */
-            gap: 30px;
+            gap: 40px;
         }
-
         nav ul li a {
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2em;
+            font-size: 1.6em;
             color: white;
+            font-weight: bold;
+            letter-spacing: 1.5px;
             transition: color 0.3s;
         }
-
         nav ul li a:hover {
             color: #FFE082;
         }
-
-        /* Contenedor de los íconos de redes sociales */
-        .social-icons {
+        nav .social-icons {
             display: flex;
             gap: 15px;
         }
-
-        .social-icons a {
+        nav .social-icons a {
             color: white;
-            font-size: 1.5em;
+            font-size: 1.6em;
             text-decoration: none;
-            transition: color 0.3s;
+        }
+        nav .social-icons a:hover {
+            color: #FFD54F;
         }
 
-        .social-icons a:hover {
-            color: #FFE082; /* Color de hover para los íconos */
+        /* Secciones (Catálogo, Videos, etc.) */
+        .tab-content {
+            padding: 50px 20px;
         }
 
-        /* Banner principal */
-        .banner {
+        /* Página de inicio */
+        #inicio {
+            background-color: #FFEB3B;
             text-align: center;
-            background: linear-gradient(to right, #FF8A65, #FFD54F);
-            padding: 60px 20px;
-            color: #fff;
+            padding: 120px 20px;
         }
-        .banner h1 {
+        #inicio h1 {
             font-family: 'Lobster', cursive;
-            font-size: 3.5em;
-            margin-bottom: 10px;
+            font-size: 4.5em;
+            color: #D84315;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
-        .banner p {
+        #inicio p {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            color: #424242;
+            max-width: 800px;
+            margin: 20px auto;
         }
 
-        /* Sección del catálogo con fondo animado */
+        /* Diseño del catálogo */
         #catalogo {
-            padding: 40px 20px;
-            text-align: center;
-            background-color: #FFF3E0;
+            background-color: #FFE082;
             position: relative;
             overflow: hidden;
         }
-
-        /* Fondo con imágenes que se mueven horizontalmente */
+        #catalogo h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            color: #BF360C;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
         #catalogo::before {
             content: '';
             position: absolute;
@@ -122,29 +122,57 @@
             animation: moveBackground 15s linear infinite;
             z-index: -1;
         }
+        /* Estilos generales */
+        .slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            overflow: hidden; /* Oculta el contenido que sobresale */
+        }
 
-        /* Animación para el fondo */
+        .catalogo-container {
+            display: flex; /* Hace que los productos estén en fila horizontal */
+            gap: 20px; /* Espacio entre los productos */
+            transition: transform 0.3s ease-in-out; /* Suaviza el movimiento al deslizar */
+            will-change: transform; /* Mejora el rendimiento */
+        }
+
+        .catalogo-container .item {
+            min-width: 200px; /* Tamaño mínimo de cada producto */
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        button.prev-btn, button.next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+            font-size: 18px;
+        }
+
+        button.prev-btn {
+            left: 10px;
+        }
+
+            button.next-btn {
+            right: 10px;
+        }
+
         @keyframes moveBackground {
             0% { left: 0; }
             100% { left: -100%; }
         }
 
-        #catalogo h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #D84315;
-        }
 
-        /* Carrusel de productos */
-        .catalogo-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            overflow-x: scroll;
-            gap: 20px;
-            padding: 20px 0;
-        }
+
+
         .item {
             min-width: 250px;
             background-color: #FFEB3B;
@@ -154,54 +182,69 @@
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             margin-right: 20px;
-            resize: both; /* Hacer los productos redimensionables */
-            overflow: hidden; /* Para evitar que se desborde el contenido */
+            flex-shrink: 0;
         }
         .item:hover {
             transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         .item img {
-            max-width: 100%;
+            width: 100%;
+            max-width: 220px;
+            height: auto;
             border-radius: 10px;
             margin-bottom: 15px;
         }
         .item p {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
 
-        /* Estilos para los controles del carrusel */
-        .catalogo-container::-webkit-scrollbar {
-            height: 8px;
+        /* Estilo para los botones de las pestañas */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
         }
-        .catalogo-container::-webkit-scrollbar-thumb {
-            background: #F57C00;
-            border-radius: 10px;
-        }
-        .catalogo-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        /* Sección de videos */
-        #videos {
-            padding: 40px 20px;
-            background: linear-gradient(to right, #FFD54F, #F57C00);
+        .tabs button {
+            padding: 12px 24px;
+            background-color: #FF8A65;
+            border: none;
             color: white;
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+        .tabs button:hover {
+            background-color: #FFD54F;
+        }
+
+        .tabs button.active {
+            background-color: #F57C00;
+        }
+
+        /* Estilos para los videos */
+        #videos {
+            background-color: #FFE082;
+            padding: 50px;
             text-align: center;
         }
         #videos h2 {
-            font-family: 'Lobster', cursive;
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            color: #BF360C;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
-        video, audio {
+        video {
             width: 80%;
-            max-width: 700px;
-            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
         }
 
-        /* Pie de página */
+        /* Footer */
         footer {
             background-color: #D84315;
             color: white;
@@ -212,173 +255,153 @@
             font-family: 'Poppins', sans-serif;
             margin: 5px 0;
         }
-
-        /* Estilos para el botón de subir */
-        #scrollUp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #F57C00;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 15px 20px;
-            font-size: 2em;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        #scrollUp:hover {
-            background-color: #FFD54F;
-            color: #D84315;
-        }
-        #scrollUp.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Estilos del reproductor de audio debajo de cada producto */
-        .audio-player {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .audio-player audio {
-            width: 100%;
-            max-width: 250px;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
     </style>
-</head>
-<body>
+        </head>
+        <body>
 
-   
-
-
-    <!-- Barra de navegación -->
-    <nav>
-        <div>
-            <img src="Imagenes/LOGO-1.png" alt="Logo del Supermercado" class="logo">
-        </div>
-        <div class="menu"> 
-            <ul>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+        <!-- Barra de navegación -->
+        <nav>
+            <div>
+                <img src="Imagenes/LOGO-1.png" alt="Logo del Supermercado" class="logo">
+            </div>
+            <div class="menu">
+             <ul>
+                <li><a href="#inicio" onclick="showTab('inicio')">Inicio</a></li>
+                <li><a href="#catalogo" onclick="showTab('catalogo')">Catálogo</a></li>
+                <li><a href="#videos" onclick="showTab('videos')">Videos</a></li>
             </ul>
         </div>
-        <!-- Íconos de redes sociales -->
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61569241297932" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/distrimargdulceriagalleteria/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@DistrimargDulceriaGalleteria" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@distrimargdulceriagallet" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
     </nav>
 
-    <!-- Banner principal -->
-    <section class="banner">
-        <h1>Bienvenido a nuestro Supermercado</h1>
-        <p>Encuentra los mejores productos con nosotros.</p>
-    </section>
+    <!-- Contenido principal de las pestañas -->
+    <div id="tabs-content">
+        <!-- Página de inicio -->
+        <div id="inicio" class="tab-content">
+            <h1>Bienvenido a nuestro Supermercado</h1>
+            <img src="Imagenes/1.png" alt="Logo del Supermercado" class="logo">
+            <p>Llena tu carrito de frescura, calidad y grandes ofertas! En nuestro supermercado, cada visita es una oportunidad para ahorrar y disfrutar de lo mejor para ti y tu familia.</p>
+        </div>
 
-    <!-- Sección de catálogo -->
-    <section id="catalogo">
-        <h2>Catálogo de Productos</h2>
+  <!-- Pestaña del Catálogo -->
+<div id="catalogo" class="tab-content" style="display: none;">
+    <h2>¡Explora nuestro catálogo de productos!</h2>
+    <div class="slider-container">
+        <button class="prev-btn">&#9664;</button> <!-- Flecha izquierda -->
         <div class="catalogo-container">
-            <!-- Producto 1 -->
             <div class="item">
                 <img src="Imagenes/P1.jpg" alt="Producto 1">
-                <p>Producto 1</p>
-                <p>$10,000</p>
-                <!-- Reproductor de audio debajo del producto -->
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="audio-producto1.mp3" type="audio/mp3">
-                        Tu navegador no soporta la reproducción de audio.
-                    </audio>
-                </div>
+                <p>Producto 1 - $10.00</p>
+                <audio controls>
+                    <source src="audios/audio1.mp3" type="audio/mp3">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
             </div>
-            <!-- Producto 2 -->
             <div class="item">
                 <img src="Imagenes/P2.jpg" alt="Producto 2">
-                <p>Producto 2</p>
-                <p>$15,000</p>
-                <!-- Reproductor de audio debajo del producto -->
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="audio-producto2.mp3" type="audio/mp3">
-                        Tu navegador no soporta la reproducción de audio.
-                    </audio>
-                </div>
+                <p>Producto 2 - $15.00</p>
+                <audio controls>
+                    <source src="audios/audio2.mp3" type="audio/mp3">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
             </div>
-            <!-- Producto 3 -->
+            <!-- Agrega más productos aquí -->
             <div class="item">
                 <img src="Imagenes/P3.jpg" alt="Producto 3">
-                <p>Producto 3</p>
-                <p>$8,000</p>
-                <!-- Reproductor de audio debajo del producto -->
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="audio-producto3.mp3" type="audio/mp3">
-                        Tu navegador no soporta la reproducción de audio.
-                    </audio>
-                </div>
+                <p>Producto 3 - $20.00</p>
+                <audio controls>
+                    <source src="audios/audio3.mp3" type="audio/mp3">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
             </div>
         </div>
-    </section>
-
-    <!-- Sección de videos -->
-    <section id="videos">
-        <h2>Videos de nuestros productos</h2>
-        <video controls>
-            <source src="video-producto1.mp4" type="video/mp4">
-            Tu navegador no soporta el formato de video.
-        </video>
-    </section>
+        <button class="next-btn">&#9654;</button> <!-- Flecha derecha -->
+    </div>
+</div>
 
 
-    <div id="instagram-feed">
-    <h2>Mis Publicaciones de Instagram</h2>
-    <!-- Aquí se mostrara las publicaicones-->
- 
 
-    <!-- Aquí se va a incluir el código JavaScript que obtiene las publicaciones de Instagram -->
-    <script src="script.js"></script>
+        <!-- Pestaña de Videos -->
+        <div id="videos" class="tab-content" style="display: none;">
+            <h2>Disfruta de nuestros videos</h2>
+            <video controls>
+                <source src="videos/video1.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
     </div>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2024 Supermercado Demo. Todos los derechos reservados.</p>
-        <p><a href="politica-privacidad.html">Política de Privacidad</a></p>
+ <div style="padding: 20px; background-color: #FFEBEE; text-align: center;">
+    <h3>¡Queremos conocer tu opinión!</h3>
+    <p>Tu retroalimentación es muy importante para mejorar nuestros productos y servicios.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmC_QOyA0Wa-yIhn7iqeBMDds_rb8QA5mE3u-6-zxk17RTyg/viewform?usp=sf_link" target="_blank" style="padding: 10px 20px; background-color: #FF8A65; color: white; font-weight: bold; border-radius: 5px; text-decoration: none;">Participa en la encuesta</a>
+</div>
+
+
+
+    <!-- Footer -->
+    
+        <!-- Footer con Contacto -->
+    <footer role="contentinfo">
+        <p>2024 - Todos los derechos reservados</p>
+        <p><ion-icon name="phone-portrait-outline"></ion-icon> Teléfono: +57 300 4889389</p>
+        <p><ion-icon name="navigate-outline"></ion-icon> <a href="https://www.google.com/maps/place/Distrimarg+Dulceria+%26+Galleteria/@4.574207,-74.1673668,17z/data=!3m1!4b1!4m6!3m5!1s0x8e3f9f0eabcf71bd:0xe2b5144869cd609b!8m2!3d4.5742017!4d-74.1647919!16s%2Fg%2F11fqbmr29_?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D/tu-enlace-aqui" target="_blank" style="color: #fff;">Dirección:  Cl. 73c Sur, Bogotá</p>
     </footer>
-   
-       <nav>
-        <ul>
-            <li><a href="delete_data.html">Eliminar Datos</a></li>
-        </ul>
-    </nav>
-    <!-- Botón de subir -->
-    <button id="scrollUp">&#8593;</button>
 
     <script>
-        // Mostrar el botón de subir cuando el usuario haga scroll hacia abajo
-        window.onscroll = function() {
-            var scrollUpButton = document.getElementById('scrollUp');
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                scrollUpButton.classList.add('show');
-            } else {
-                scrollUpButton.classList.remove('show');
-            }
-        };
-
-        // Función para volver al inicio cuando el usuario haga clic en el botón de subir
-        document.getElementById('scrollUp').addEventListener('click', function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
+    // Mostrar las pestañas correspondientes
+    function showTab(tab) {
+        var tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(function(tabContent) {
+            tabContent.style.display = 'none';
         });
-    </script>
+        document.getElementById(tab).style.display = 'block';
+        // Evitar el desplazamiento predeterminado
+        window.scrollTo(0, 0); // Mantiene la barra de navegación fija en la parte superior
+    }
+
+    // Agregar evento a los enlaces del menú para evitar el desplazamiento automático
+    document.querySelectorAll('nav ul li a').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Previene el comportamiento predeterminado del anclaje
+            const targetTab = this.getAttribute('href').replace('#', ''); // Obtiene el id de la sección
+            showTab(targetTab); // Muestra la pestaña seleccionada
+        });
+    });
+
+    // Mostrar la pestaña de inicio por defecto
+    showTab('inicio');
+
+    // Selecciona los elementos
+const catalogoContainer = document.querySelector('.catalogo-container');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+// Define el ancho de desplazamiento (igual al ancho de un producto más el gap)
+const scrollAmount = 220; // Ajusta según el ancho de los productos
+
+let currentScrollPosition = 0;
+
+// Eventos para las flechas
+prevBtn.addEventListener('click', () => {
+    currentScrollPosition -= scrollAmount;
+    if (currentScrollPosition < 0) currentScrollPosition = 0;
+    catalogoContainer.style.transform = `translateX(-${currentScrollPosition}px)`;
+});
+
+nextBtn.addEventListener('click', () => {
+    const maxScroll = catalogoContainer.scrollWidth - catalogoContainer.clientWidth;
+    currentScrollPosition += scrollAmount;
+    if (currentScrollPosition > maxScroll) currentScrollPosition = maxScroll;
+    catalogoContainer.style.transform = `translateX(-${currentScrollPosition}px)`;
+});
+
+</script>
+
 </body>
 </html>
